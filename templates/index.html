@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOUNHUB</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        background-color:#f4fff6;
+        color:#0f3d1e;
+        display:flex;
+        flex-direction:column;
+        min-height:100vh;
+    }
+
+    main{
+        flex:1; /* Ensures footer stays at bottom */
+    }
+
+    /* NAVBAR */
+    nav{
+        background:#0f3d1e;
+        padding:15px 5%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        position:sticky;
+        top:0;
+        z-index:1000;
+    }
+
+    .logo{
+        color:white;
+        font-size:22px;
+        font-weight:bold;
+    }
+
+    .logo span{
+        color:#ff3b3b;
+    }
+
+    .nav-links{
+        display:flex;
+        list-style:none;
+        gap:25px;
+    }
+
+    .nav-links a{
+        text-decoration:none;
+        color:white;
+        font-weight:500;
+        transition:0.3s;
+    }
+
+    .nav-links a:hover{
+        color:#ff3b3b;
+    }
+
+    /* Hamburger */
+    .menu-toggle{
+        display:none;
+        flex-direction:column;
+        cursor:pointer;
+    }
+
+    .menu-toggle span{
+        height:3px;
+        width:25px;
+        background:white;
+        margin:4px 0;
+        border-radius:2px;
+    }
+
+    /* HERO */
+    .hero{
+        text-align:center;
+        padding:60px 20px;
+    }
+
+    .hero h1{
+        font-size:36px;
+        margin-bottom:15px;
+    }
+
+    .hero p{
+        font-size:18px;
+        color:#2f6b3b;
+    }
+
+    /* CARDS */
+    .cards{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+        gap:25px;
+        padding:50px 5%;
+        grid-auto-rows: 1fr; /* Ensures single card fills space nicely */
+    }
+
+    .card{
+        background:white;
+        padding:25px;
+        border-radius:10px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        transition:0.3s;
+        border-top:5px solid #0f3d1e;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .card:hover{
+        transform:translateY(-5px);
+        border-top:5px solid #ff3b3b;
+    }
+
+    .card h3{
+        margin-bottom:15px;
+        color:#0f3d1e;
+    }
+
+    .card p{
+        font-size:15px;
+        line-height:1.6;
+        color:#444;
+        flex:1;
+    }
+
+    .card button{
+        margin-top:15px;
+        padding:10px 18px;
+        border:none;
+        background:#0f3d1e;
+        color:white;
+        border-radius:5px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .card button:hover{
+        background:#ff3b3b;
+    }
+
+    /* FOOTER */
+    footer{
+        background:#0f3d1e;
+        color:white;
+        text-align:center;
+        padding:20px;
+    }
+
+    footer span{
+        color:#ff3b3b;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+        .nav-links{
+            position:absolute;
+            right:0; /* Aligns dropdown to right */
+            top:70px;
+            background:#0f3d1e;
+            flex-direction:column;
+            width:200px; /* Fixed width for dropdown */
+            display:none;
+            padding:20px;
+        }
+
+        .nav-links li{
+            margin:15px 0;
+        }
+
+        .nav-links.active{
+            display:flex;
+        }
+
+        .menu-toggle{
+            display:flex;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a style="text-decoration: none;" href="/"><div class="logo">Noun<span>Hub</span></div></a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <!--<li><a href="#">Services</a></li>-->
+        <li><a href="#">About</a></li>
+        <!--<li><a href="#">Contact</a></li>-->
+    </ul>
+
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Welcome to NounHub</h1>
+        <p>Your ultimate companion at the National Open University of Nigeria — We support your learning journey</p>
+    </section>
+
+    <!-- CARDS -->
+    <section class="cards">
+        <a style="text-decoration: none;" href="{% url 'past_questions' %}"><div class="card">
+            <h3>PAST QUESTIONS</h3>
+            <p>Boost your exam confidence! Browse past questions from every course and practice like a pro.</p>
+            <button>Explore</button>
+        </div></a>
+
+        <!--<div class="card">
+            <h3>Green Energy</h3>
+            <p>Power your future with renewable energy solutions that protect the planet.</p>
+            <button>Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Consulting</h3>
+            <p>Professional advisory services to help your organization grow responsibly.</p>
+            <button>Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Community</h3>
+            <p>Join a network of environmentally conscious individuals making a difference.</p>
+            <button>Learn More</button>
+        </div>-->
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    © <p id="year" style="display: inline;"></p> NounHub. Built with <span>❤</span> in Green & White.
+</footer>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const year = document.getElementById("year");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+    
+    const currentYear = new Date().getFullYear();
+    
+    year.innerText = currentYear
+    
+
+    
+</script>
+
+</body>
+</html>
